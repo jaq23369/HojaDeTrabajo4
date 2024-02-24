@@ -8,15 +8,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ConcreteDataStructureFactory factory = new ConcreteDataStructureFactory();
 
-        String filePath = "expression.txt";
-        String expression;
-        try {
-            expression = FileReaderImpl.readFile(filePath);
-        } catch (Exception e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
-            scanner.close();
-            return;
-        }
+        // Solicitar al usuario que ingrese la expresión matemática infija
+        System.out.println("Por favor, ingresa la expresión matemática en notación infija:");
+        String infixExpression = scanner.nextLine();
+
 
         System.out.println("Por favor, elige la implementación de Stack que deseas usar:");
         System.out.println("1. ArrayList");
@@ -48,10 +43,10 @@ public class Main {
         }
 
         Calculator calculator = Calculator.getInstance();
-        String postfixExpression = calculator.convertToPostfix(expression);
+        String postfixExpression = calculator.convertToPostfix(infixExpression);
         int result = calculator.evaluatePostfix(postfixExpression);
 
-        System.out.println("La expresión infija es: " + expression);
+        System.out.println("La expresión infija es: " + infixExpression);
         System.out.println("La expresión posfija es: " + postfixExpression);
         System.out.println("El resultado de evaluar la expresión es: " + result);
 
