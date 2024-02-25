@@ -1,18 +1,28 @@
 package uvg.edu.gt;
 
+/**
+ * Implementación de una lista doblemente enlazada.
+ *
+ * @param <E> Tipo de elementos almacenados en la lista.
+ */
 public class DoublyLinkedList<E> implements List<E> {
-    
+
     private Node<E> head; // Referencia al primer nodo de la lista
     private Node<E> tail; // Referencia al último nodo de la lista
     private int size; // Número de elementos en la lista
 
+    /**
+     * Construye una lista doblemente enlazada vacía.
+     */
     public DoublyLinkedList() {
         head = null;
         tail = null;
         size = 0;
     }
 
-    // Clase interna Node para DoublyLinkedList
+    /**
+     * Clase interna Node para DoublyLinkedList.
+     */
     private static class Node<E> {
         E element;
         Node<E> next;
@@ -25,6 +35,13 @@ public class DoublyLinkedList<E> implements List<E> {
         }
     }
 
+    /**
+     * Añade un elemento en la posición especificada.
+     *
+     * @param element Elemento a añadir.
+     * @param index   Índice en el que se añadirá el elemento.
+     * @throws IndexOutOfBoundsException Si el índice está fuera de rango.
+     */
     @Override
     public void add(E element, int index) {
         if (index < 0 || index > size) {
@@ -37,6 +54,13 @@ public class DoublyLinkedList<E> implements List<E> {
         }
     }
 
+    /**
+     * Elimina el elemento en la posición especificada.
+     *
+     * @param index Índice del elemento a eliminar.
+     * @return El elemento eliminado.
+     * @throws IndexOutOfBoundsException Si el índice está fuera de rango.
+     */
     @Override
     public E remove(int index) {
         if (index < 0 || index >= size) {
@@ -45,6 +69,13 @@ public class DoublyLinkedList<E> implements List<E> {
         return unlink(node(index));
     }
 
+    /**
+     * Obtiene el elemento en la posición especificada.
+     *
+     * @param index Índice del elemento a obtener.
+     * @return El elemento en la posición especificada.
+     * @throws IndexOutOfBoundsException Si el índice está fuera de rango.
+     */
     @Override
     public E get(int index) {
         if (index < 0 || index >= size) {
@@ -53,17 +84,27 @@ public class DoublyLinkedList<E> implements List<E> {
         return node(index).element;
     }
 
+    /**
+     * Obtiene el tamaño de la lista.
+     *
+     * @return Tamaño de la lista.
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Verifica si la lista está vacía.
+     *
+     * @return true si la lista está vacía, false de lo contrario.
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
-    // Enlaza el elemento e como último elemento
+    // Enlaza el elemento como último elemento
     private void linkLast(E e) {
         final Node<E> l = tail;
         final Node<E> newNode = new Node<>(l, e, null);
@@ -75,7 +116,7 @@ public class DoublyLinkedList<E> implements List<E> {
         size++;
     }
 
-    // Enlaza el elemento e justo antes de Node<E> succ
+    // Enlaza el elemento justo antes del nodo succ
     private void linkBefore(E e, Node<E> succ) {
         final Node<E> pred = succ.prev;
         final Node<E> newNode = new Node<>(pred, e, succ);
@@ -127,4 +168,3 @@ public class DoublyLinkedList<E> implements List<E> {
         }
     }
 }
-
