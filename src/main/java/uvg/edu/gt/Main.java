@@ -2,6 +2,11 @@ package uvg.edu.gt;
 
 import java.util.Scanner;
 
+/**
+ * Clase principal que permite al usuario ingresar una expresión matemática en notación infija,
+ * elegir el tipo de implementación de Stack y List que desea usar, y luego muestra la expresión
+ * en notación posfija y su resultado después de evaluarla.
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -12,7 +17,7 @@ public class Main {
         System.out.println("Por favor, ingresa la expresión matemática en notación infija:");
         String infixExpression = scanner.nextLine();
 
-
+        // Solicitar al usuario que elija la implementación de Stack
         System.out.println("Por favor, elige la implementación de Stack que deseas usar:");
         System.out.println("1. ArrayList");
         System.out.println("2. Vector");
@@ -46,6 +51,7 @@ public class Main {
         String postfixExpression = calculator.convertToPostfix(infixExpression);
         int result = calculator.evaluatePostfix(postfixExpression);
 
+        // Mostrar los resultados
         System.out.println("La expresión infija es: " + infixExpression);
         System.out.println("La expresión posfija es: " + postfixExpression);
         System.out.println("El resultado de evaluar la expresión es: " + result);

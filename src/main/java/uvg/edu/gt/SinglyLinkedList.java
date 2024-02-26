@@ -1,9 +1,17 @@
 package uvg.edu.gt;
 
+/**
+ * Implementación de una lista enlazada simple.
+ *
+ * @param <E> Tipo de elementos almacenados en la lista.
+ */
 public class SinglyLinkedList<E> implements List<E> {
     private Node<E> head; // referencia al primer nodo de la lista
     private int size; // número de elementos en la lista
 
+    /**
+     * Constructor para crear una lista enlazada simple vacía.
+     */
     public SinglyLinkedList() {
         head = null;
         size = 0;
@@ -20,6 +28,13 @@ public class SinglyLinkedList<E> implements List<E> {
         }
     }
 
+    /**
+     * Agrega un elemento en la posición especificada en la lista.
+     *
+     * @param element Elemento a agregar.
+     * @param index   Índice donde se agregará el elemento.
+     * @throws IndexOutOfBoundsException si el índice está fuera de los límites de la lista.
+     */
     @Override
     public void add(E element, int index) {
         if (index < 0 || index > size) {
@@ -34,6 +49,13 @@ public class SinglyLinkedList<E> implements List<E> {
         size++;
     }
 
+    /**
+     * Elimina y devuelve el elemento en la posición especificada en la lista.
+     *
+     * @param index Índice del elemento a eliminar.
+     * @return Elemento eliminado.
+     * @throws IndexOutOfBoundsException si el índice está fuera de los límites de la lista.
+     */
     @Override
     public E remove(int index) {
         if (index < 0 || index >= size) {
@@ -52,6 +74,13 @@ public class SinglyLinkedList<E> implements List<E> {
         return element;
     }
 
+    /**
+     * Obtiene el elemento en la posición especificada en la lista.
+     *
+     * @param index Índice del elemento a obtener.
+     * @return Elemento en la posición especificada.
+     * @throws IndexOutOfBoundsException si el índice está fuera de los límites de la lista.
+     */
     @Override
     public E get(int index) {
         if (index < 0 || index >= size) {
@@ -61,17 +90,32 @@ public class SinglyLinkedList<E> implements List<E> {
         return current.element;
     }
 
+    /**
+     * Obtiene el número de elementos en la lista.
+     *
+     * @return Número de elementos en la lista.
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Verifica si la lista está vacía.
+     *
+     * @return true si la lista está vacía, false de lo contrario.
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
-    // Método auxiliar para obtener el nodo en el índice especificado
+    /**
+     * Método auxiliar para obtener el nodo en el índice especificado.
+     *
+     * @param index Índice del nodo a obtener.
+     * @return Nodo en el índice especificado.
+     */
     private Node<E> getNode(int index) {
         Node<E> current = head;
         for (int i = 0; i < index; i++) {
